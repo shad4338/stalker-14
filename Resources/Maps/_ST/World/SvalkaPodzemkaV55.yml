@@ -84033,10 +84033,6 @@ entities:
     - type: NewMapTeleport
       cooldownTime: 5
       portalName: Kordon-Svalka1
-    - type: LinkedEntity
-      deleteOnEmptyLinks: True
-      linkedEntities:
-      - invalid
 - proto: MatrassBed
   entities:
   - uid: 2268
@@ -105085,10 +105081,6 @@ entities:
       rot: 3.141592653589793 rad
       pos: -23.5,-65.5
       parent: 1
-    - type: LinkedEntity
-      deleteOnEmptyLinks: True
-      linkedEntities:
-      - invalid
 - proto: Svalka-UndergrundSvalka6-1
   entities:
   - uid: 6217
