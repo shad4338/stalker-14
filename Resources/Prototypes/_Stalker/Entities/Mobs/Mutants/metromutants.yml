@@ -43,7 +43,7 @@
       soundHit:
         path: /Audio/_Stalker/Mutants/metromutants/metrokikimoraattack.ogg
       soundSwing:
-        collection: /Audio/_Stalker/Mutants/metromutants/metrokikimoraattack.ogg
+        path: /Audio/_Stalker/Mutants/metromutants/metrokikimoraattack.ogg
 
 - type: entity
   parent: BaseMobMutant
@@ -92,8 +92,6 @@
         150: Dead
     - type: MeleeWeapon
       attackRate: 0.5
-      heavyWindupModifier: 1
-      heavyDamageModifier: 1.25
       angle: 30
       range: 1.5
       soundHit:
@@ -172,8 +170,6 @@
         225: Dead
     - type: MeleeWeapon
       attackRate: 0.5
-      heavyWindupModifier: 1
-      heavyDamageModifier: 1.25
       angle: 30
       range: 1.5
       soundHit:
