@@ -1,0 +1,206 @@
+- type: entity
+  parent: BaseMobMutantBlindDog
+  id: MetroMobMutantKikimora
+  name: кикимора
+  description: Самая мерзкая и слабая тварь из всей фауны, бьют со спины, никогда в лобовую не пойдут. Стайные.
+  suffix: Metro, Спавнить по 2-4, аналог слепого пса
+  components:
+    - type: HTN
+      rootTask:
+        task: STBlindDogWhiteCompound
+    - type: Butcherable
+      spawned:
+        - id: FoodMeatDog
+          maxAmount: 2
+          prob: 1
+    - type: Sprite
+      sprite: /Textures/_Stalker/Mobs/Mutants/metromutants/kikimora.rsi
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base"]
+          state: kikimora
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 75
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound: /Audio/_Stalker/Mutants/metromutants/metrokikimoradeath.ogg
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        75: Dead
+    - type: STWeight
+      self: 16
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3.8
+      baseSprintSpeed: 4.4
+    - type: MeleeWeapon
+      wideAnimation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 12
+      soundHit:
+        path: /Audio/_Stalker/Mutants/metromutants/metrokikimoraattack.ogg
+      soundSwing:
+        collection: /Audio/_Stalker/Mutants/metromutants/metrokikimoraattack.ogg
+
+- type: entity
+  parent: BaseMobMutant
+  id: MetroMobMutantNosach
+  name: носач
+  suffix: Metro, Спавнить по 1-2, аналог снорка
+  description: Основные твари Метро, мускулистые, сильные, живучие.
+  components:
+    - type: Butcherable
+      spawned:
+        - id: FoodMeatBoar
+          maxAmount: 2
+    - type: Damageable
+      damageModifierSet: STMutantT2DamageModifierSet
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: nosach
+        Critical:
+          Base: dead
+        Dead:
+          Base: dead
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 150
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound:
+                path: /Audio/_Stalker/Mutants/metromutants/metronosachdeath.ogg
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.25
+          density: 800
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        150: Dead
+    - type: MeleeWeapon
+      attackRate: 0.5
+      heavyWindupModifier: 1
+      heavyDamageModifier: 1.25
+      angle: 30
+      range: 1.5
+      soundHit:
+        path: /Audio/_Stalker/Mutants/metromutants/metronosachattack.ogg
+        params:
+          variation: 0.125
+      soundSwing:
+        path: /Audio/_Stalker/Mutants/metromutants/metronosachattack.ogg
+        params:
+          variation: 0.125
+      animation: WeaponArcClaw
+      wideAnimation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 23
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 3.8
+      baseSprintSpeed: 4.4
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+          state: nosach
+          sprite: /Textures/_Stalker/Mobs/Mutants/metromutants/nosach.rsi
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        150: 0.7
+    - type: StaminaDamageOnHit
+      damage: 15
+    - type: STWeight
+      self: 90
+
+- type: entity
+  parent: BaseMobMutant
+  id: MetroMobMutantWarden
+  name: страж
+  suffix: Metro, Спавнить по 1, аналог кровососа-кабана
+  description: Хозяин поверхности, наиболее известный вид.
+  components:
+    - type: Butcherable
+      spawned:
+        - id: FoodMeatBoar
+          maxAmount: 3
+    - type: Damageable
+      damageModifierSet: STMutantT2DamageModifierSet
+    - type: DamageStateVisuals
+      states:
+        Alive:
+          Base: warden
+        Critical:
+          Base: dead
+        Dead:
+          Base: dead
+    - type: Destructible
+      thresholds:
+        - trigger:
+            !type:DamageTrigger
+            damage: 225
+          behaviors:
+            - !type:PlaySoundBehavior
+              sound:
+                path: /Audio/_Stalker/Mutants/metromutants/metrowardendeath.ogg
+    - type: Fixtures
+      fixtures:
+        fix1:
+          shape:
+            !type:PhysShapeCircle
+            radius: 0.25
+          density: 800
+          mask:
+            - MobMask
+          layer:
+            - MobLayer
+    - type: MobThresholds
+      thresholds:
+        0: Alive
+        225: Dead
+    - type: MeleeWeapon
+      attackRate: 0.5
+      heavyWindupModifier: 1
+      heavyDamageModifier: 1.25
+      angle: 30
+      range: 1.5
+      soundHit:
+        path: /Audio/_Stalker/Mutants/metromutants/metrowardenattack.ogg
+        params:
+          variation: 0.125
+      soundSwing:
+        path: /Audio/_Stalker/Mutants/metromutants/metrowardenattack.ogg
+        params:
+          variation: 0.125
+      animation: WeaponArcClaw
+      wideAnimation: WeaponArcClaw
+      damage:
+        types:
+          Slash: 34
+    - type: MovementSpeedModifier
+      baseWalkSpeed: 2
+      baseSprintSpeed: 3.5
+    - type: Sprite
+      layers:
+        - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+          state: warden
+          sprite: /Textures/_Stalker/Mobs/Mutants/metromutants/warden.rsi
+    - type: SlowOnDamage
+      speedModifierThresholds:
+        225: 0.7
+    - type: StaminaDamageOnHit
+      damage: 15
+    - type: STWeight
+      self: 90
